@@ -5,12 +5,17 @@
  */
 package conversor;
 
+import static java.lang.String.valueOf;
+import java.text.DecimalFormat;
+
 /**
  *
  * @author dalonsoperez
  */
 public class Convertir extends javax.swing.JFrame {
 
+    double valor;
+    DecimalFormat df  = new DecimalFormat("0.00");
     /**
      * Creates new form Convertir
      */
@@ -38,6 +43,9 @@ public class Convertir extends javax.swing.JFrame {
         Salida2 = new javax.swing.JLabel();
         Dinero1 = new javax.swing.JTextField();
         Dinero2 = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(400, 400));
@@ -66,29 +74,50 @@ public class Convertir extends javax.swing.JFrame {
         });
         getContentPane().add(Back, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
 
-        MonedaEntrada1.setText("jLabel1");
-        getContentPane().add(MonedaEntrada1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 80, -1, -1));
+        MonedaEntrada1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        getContentPane().add(MonedaEntrada1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 80, 150, 30));
 
-        MonedaSalida1.setText("jLabel2");
-        getContentPane().add(MonedaSalida1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 80, -1, -1));
+        MonedaSalida1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        getContentPane().add(MonedaSalida1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 70, 150, 30));
 
-        MonedaEntrada2.setText("jLabel3");
-        getContentPane().add(MonedaEntrada2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 270, -1, -1));
+        MonedaEntrada2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        getContentPane().add(MonedaEntrada2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 250, 150, 30));
 
-        MonedaSalida2.setText("jLabel4");
-        getContentPane().add(MonedaSalida2, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 270, -1, -1));
+        MonedaSalida2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        getContentPane().add(MonedaSalida2, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 250, 150, 30));
 
-        Salida1.setText("jLabel5");
-        getContentPane().add(Salida1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 130, -1, -1));
+        Salida1.setBackground(new java.awt.Color(255, 255, 255));
+        Salida1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        getContentPane().add(Salida1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 110, 150, 30));
 
-        Salida2.setText("jLabel6");
-        getContentPane().add(Salida2, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 320, -1, -1));
+        Salida2.setBackground(new java.awt.Color(255, 255, 255));
+        Salida2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        getContentPane().add(Salida2, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 280, 150, 30));
 
-        Dinero1.setText("jTextField1");
-        getContentPane().add(Dinero1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 130, -1, -1));
+        Dinero1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        getContentPane().add(Dinero1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 110, 150, 30));
 
-        Dinero2.setText("jTextField2");
-        getContentPane().add(Dinero2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 300, -1, -1));
+        Dinero2.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        getContentPane().add(Dinero2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 280, 150, 30));
+
+        jButton1.setText("Convertir");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 160, 100, -1));
+
+        jButton2.setText("Convertir");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 330, 100, -1));
+
+        jPanel1.setBackground(new java.awt.Color(204, 204, 204));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 210, 400, 20));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -101,6 +130,18 @@ public class Convertir extends javax.swing.JFrame {
         this.setVisible(false);
         new Menu().setVisible(true);
     }//GEN-LAST:event_BackActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        valor = Double.parseDouble(Dinero1.getText());
+        calcula1(Menu.getSelector());
+        Salida1.setText(valueOf(df.format(valor)));
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        valor = Double.parseDouble(Dinero2.getText());
+        calcula2(Menu.getSelector());
+        Salida2.setText(valueOf(df.format(valor)));
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     private void euDol(){
         MonedaEntrada1.setText("Euros");
@@ -159,6 +200,40 @@ public class Convertir extends javax.swing.JFrame {
                     break;
         }
     }
+    
+    private void calcula1(int selector){
+        switch(selector){
+            case 0: valor = valor*1.09428;
+                    break;
+            case 1: valor = (valor*15.40)/2919;
+                    break;
+            case 2: valor = valor*3084;
+                    break;
+            case 3: valor = valor/2919;
+                    break;
+            case 4: valor = valor*16.08;
+                    break;
+            case 5: valor = valor*15.40;
+                    break;
+        }
+    }
+    
+    private void calcula2(int selector){
+        switch(selector){
+            case 0: valor = valor/1.09428;
+                    break;
+            case 1: valor = (valor*2919)/15.40;
+                    break;
+            case 2: valor = valor/3084;
+                    break;
+            case 3: valor = valor*2919;
+                    break;
+            case 4: valor = valor/16.08;
+                    break;
+            case 5: valor = valor/15.40;
+                    break;
+        }
+    }
     /**
      * @param args the command line arguments
      */
@@ -205,5 +280,8 @@ public class Convertir extends javax.swing.JFrame {
     private javax.swing.JLabel MonedaSalida2;
     private javax.swing.JLabel Salida1;
     private javax.swing.JLabel Salida2;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }
