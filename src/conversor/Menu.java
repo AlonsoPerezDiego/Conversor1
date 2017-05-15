@@ -6,6 +6,7 @@
 package conversor;
 
 import java.awt.Color;
+import javax.swing.ImageIcon;
 
 /**
  *
@@ -21,6 +22,12 @@ public class Menu extends javax.swing.JFrame {
     public Menu() {
         initComponents();
         this.setLocationRelativeTo(null);
+        try{
+            this.setIconImage(new ImageIcon(getClass().getResource("coins.png")).getImage());
+            System.out.println("done");
+        }catch(Exception ex){
+            new Menu();
+        }
     }
 
     /**
@@ -41,6 +48,7 @@ public class Menu extends javax.swing.JFrame {
         ArgDol = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Conversor");
         setMaximumSize(new java.awt.Dimension(400, 400));
         setMinimumSize(new java.awt.Dimension(400, 400));
         setUndecorated(true);

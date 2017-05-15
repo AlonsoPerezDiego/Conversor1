@@ -7,6 +7,7 @@ package conversor;
 
 import static java.lang.String.valueOf;
 import java.text.DecimalFormat;
+import javax.swing.ImageIcon;
 
 /**
  *
@@ -22,6 +23,12 @@ public class Convertir extends javax.swing.JFrame {
     public Convertir() {
         initComponents();
         this.setLocationRelativeTo(null);
+        try{
+            this.setIconImage(new ImageIcon(getClass().getResource("coins.png")).getImage());
+            System.out.println("done");
+        }catch(Exception ex){
+            new Convertir();
+        }
     }
 
     /**
@@ -48,6 +55,8 @@ public class Convertir extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Conversor");
+        setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setMaximumSize(new java.awt.Dimension(400, 400));
         setMinimumSize(new java.awt.Dimension(400, 400));
         setUndecorated(true);
@@ -78,7 +87,7 @@ public class Convertir extends javax.swing.JFrame {
         getContentPane().add(MonedaEntrada1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 80, 150, 30));
 
         MonedaSalida1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        getContentPane().add(MonedaSalida1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 70, 150, 30));
+        getContentPane().add(MonedaSalida1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 70, 150, 30));
 
         MonedaEntrada2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         getContentPane().add(MonedaEntrada2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 250, 150, 30));
@@ -132,15 +141,23 @@ public class Convertir extends javax.swing.JFrame {
     }//GEN-LAST:event_BackActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        valor = Double.parseDouble(Dinero1.getText());
-        calcula1(Menu.getSelector());
-        Salida1.setText(valueOf(df.format(valor)));
+        try{
+            valor = Double.parseDouble(Dinero1.getText());
+            calcula1(Menu.getSelector());
+            Salida1.setText(valueOf(df.format(valor)));
+        }catch(Exception ex){
+            Salida1.setText("FORMAT ERROR");
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        valor = Double.parseDouble(Dinero2.getText());
-        calcula2(Menu.getSelector());
-        Salida2.setText(valueOf(df.format(valor)));
+        try{
+            valor = Double.parseDouble(Dinero2.getText());
+            calcula2(Menu.getSelector());
+            Salida2.setText(valueOf(df.format(valor)));
+        }catch(Exception ex){
+            Salida2.setText("FORMAT ERROR");
+        }
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void euDol(){
